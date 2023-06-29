@@ -12,3 +12,22 @@
     0px -1px 1px 0px rgba(255, 255, 255, 0.1) inset;
   backdrop-filter: blur(16px); /* glassmorfismo */
 }
+
+.side-menu ion-icon {
+  display: flex;
+  padding: 0.5rem;
+  align-items: flex-start;
+  border-radius: 5rem;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  color: #FFFFFF; /* Cor só aparece quando hover*/
+  opacity: 0.8; /* Somente necessária uma casa decimal na import figma */
+
+}
+
+.side-menu ion-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
