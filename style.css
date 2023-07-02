@@ -43,6 +43,44 @@ footer {
   grid-area: footer;
 }
 
+/* Side Menu */
+.side-menu {
+  display: flex;
+  padding: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  border-radius: 5rem;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.05),
+    0px 1px 1px 0px rgba(255, 255, 255, 0.3) inset,
+    0px -1px 1px 0px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(16px); /* glassmorfismo */
+
+  /* Alinha o elemento filho ao centro */
+  height: fit-content;
+  align-self: center;
+}
+
+.side-menu ion-icon {
+  display: flex;
+  padding: 0.5rem;
+  align-items: flex-start;
+  border-radius: 5rem;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  color: #ffffff; /* Cor só aparece quando hover*/
+  opacity: 0.8; /* Somente necessária uma casa decimal na import figma */
+}
+
+.side-menu ion-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
+
 /* NavBar */
 .nav-bar {
   display: flex;
@@ -180,38 +218,4 @@ iframe {
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(2px);
-}
-
-/* Side Menu */
-.side-menu {
-  display: flex;
-  padding: 0.75rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-
-  border-radius: 5rem;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.05),
-    0px 1px 1px 0px rgba(255, 255, 255, 0.3) inset,
-    0px -1px 1px 0px rgba(255, 255, 255, 0.1) inset;
-  backdrop-filter: blur(16px); /* glassmorfismo */
-}
-
-.side-menu ion-icon {
-  display: flex;
-  padding: 0.5rem;
-  align-items: flex-start;
-  border-radius: 5rem;
-
-  width: 1.5rem;
-  height: 1.5rem;
-
-  color: #ffffff; /* Cor só aparece quando hover*/
-  opacity: 0.8; /* Somente necessária uma casa decimal na import figma */
-}
-
-.side-menu ion-icon:hover {
-  background: rgba(255, 255, 255, 0.2);
-  opacity: 1;
 }
