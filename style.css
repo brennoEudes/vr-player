@@ -14,16 +14,16 @@ body {
   display: grid;
   place-content: center;
   height: 100vh;
+  overflow: hidden; /* esconde barras laterais */
 }
 
 #app {
   display: grid;
-  grid-template-columns: max-content max-content; /* 2 colunas*/
-  grid-template-rows: max-content max-content max-content; /* 3 linhas */
-  grid-template-areas: /* IMPORTANTE: o aside preenche toda a 1º coluna */
+  grid-template-areas: /* IMPORTANTE:  2 colunas e 3 linhas. O aside preenche toda a 1º coluna */
     "aside header"
     "aside main"
     "aside footer";
+  gap: 1.5rem;
 }
 
 /* Conectando os elementos */
@@ -202,10 +202,12 @@ iframe {
   border-radius: inherit;
 }
 
+/* Footer */
 .interaction {
   display: flex;
   align-items: center;
   gap: 1rem;
+  justify-self: center; /* Como o pai é grid, podemos alinhar ao centro com esse cmd */
 }
 
 .interaction .elipse {
@@ -222,4 +224,19 @@ iframe {
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(2px);
+}
+
+/* Animações */
+/* IMPORTANTE: Saiba onde começar e terminar! */
+
+#app {
+  animation: appear /* nome animação */ 400ms /* velocidade execução*/ 500ms /* tempo espera p/iniciar */ backwards /* chama as props de saída */;
+}
+
+@keyframes appear {
+  /* props de saída */
+  from {
+    scale: 2;
+    opacity: 0;
+  }
 }
