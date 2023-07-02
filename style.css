@@ -1,3 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(./assets/background.jpg);
+  background-position: center; /* img centralizada */
+  background-size: cover; /* img cobre toda vh */
+  background-repeat: no-repeat; /* img não se repete */
+
+  /* elemento play vídeo sobreposto */
+  display: grid;
+  place-content: center;
+  height: 100vh;
+
+}
+
+
 /* NavBar */
 .nav-bar {
   display: flex;
