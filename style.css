@@ -14,9 +14,34 @@ body {
   display: grid;
   place-content: center;
   height: 100vh;
-
 }
 
+#app {
+  display: grid;
+  grid-template-columns: max-content max-content; /* 2 colunas*/
+  grid-template-rows: max-content max-content max-content; /* 3 linhas */
+  grid-template-areas: /* IMPORTANTE: o aside preenche toda a 1º coluna */
+    "aside header"
+    "aside main"
+    "aside footer";
+}
+
+/* Conectando os elementos */
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: aside;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
 
 /* NavBar */
 .nav-bar {
