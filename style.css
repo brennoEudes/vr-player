@@ -59,13 +59,13 @@ footer {
   backdrop-filter: blur(16px);
 }
 
-.nav-bar actions {
+.actions {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.nav-bar actions ion-icons {
+.actions ion-icon {
   width: 1.5rem;
   height: 1.5rem;
   color: #ffffff;
@@ -76,9 +76,30 @@ footer {
   padding: 0.5rem;
   align-items: center;
   justify-content: center;
+  border-radius: 5rem;
 }
 
-.nav-bar adress-bar {
+.actions i.ai-panel-left:hover,
+.actions ion-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
+
+.actions i.ai-panel-left {
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  display: flex;
+  padding: 0.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 5rem;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.address-bar {
   display: flex;
   width: 27.5rem;
   padding: 0.75rem;
