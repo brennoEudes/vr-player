@@ -13,14 +13,15 @@ const videoId = "qC0vDKVPCrw"
 
 // 1º frame (abaixo)
 function createAmbientLight() {
-  if (!animationEnded)
-    return (ambientLight = new YT.Player("ambient-light", {
-      videoId,
-      events: {
-        onReady: ambientLightReady /* vídeo mute */,
-        onStateChange: ambientStateChange,
-      },
-    }))
+  if (!animationEnded) return
+
+  ambientLight = new YT.Player("ambient-light", {
+    videoId,
+    events: {
+      onReady: ambientLightReady /* vídeo mute */,
+      onStateChange: ambientStateChange,
+    },
+  })
 }
 
 // 2º frame (acima)
@@ -37,16 +38,27 @@ function videoStateChange(event) {
   switch (event.data) {
     case YT.PlayerState.PLAYING:
       if (!ambientLight) return
-      ambientLight.seekTo(event.target.getCurrentTime()); // colocando o vídeo de abaixo no msm tempo q o vídeo principal!
-      ambientLight.playVideo();
+      ambientLight.seekTo(event.target.getCurrentTime()) // colocando o vídeo de abaixo no msm tempo q o vídeo principal!
+      ambientLight.playVideo()
       break
 
     case YT.PlayerState.PAUSE:
       if (!ambientLight) return
-      ambientLight.seekTo(event.target.getCurrentTime());
-      ambientLight.pauseVideo();
-      break;
+      ambientLight.seekTo(event.target.getCurrentTime())
+      ambientLight.pauseVideo()
+      break
   }
 }
-function ambientLightReady(event) {}
+function ambientLightReady(event) {
+  event.target.mute() /* cmd video mute */
+}
 function ambientStateChange(event) {}
+
+const app = document.querySelector("#app")
+/* quando a animação acabar, executa a função */
+app.addEventListener("animationend", (e) => {
+  if (e.animationName !== "appear") return
+
+  animationEnded = true
+  createAmbientLight()
+})
