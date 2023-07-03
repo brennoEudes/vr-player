@@ -33,6 +33,20 @@ window.onYouTubeIframeAPIReady = function () {
   })
 }
 
-function videoStateChange(event) {}
+function videoStateChange(event) {
+  switch (event.data) {
+    case YT.PlayerState.PLAYING:
+      if (!ambientLight) return
+      ambientLight.seekTo(event.target.getCurrentTime()); // colocando o vídeo de abaixo no msm tempo q o vídeo principal!
+      ambientLight.playVideo();
+      break
+
+    case YT.PlayerState.PAUSE:
+      if (!ambientLight) return
+      ambientLight.seekTo(event.target.getCurrentTime());
+      ambientLight.pauseVideo();
+      break;
+  }
+}
 function ambientLightReady(event) {}
 function ambientStateChange(event) {}
