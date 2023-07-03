@@ -252,3 +252,5 @@ iframe {
     opacity: 0;
   }
 }
+
+/* obs: ver Youtube API IFRAME; colocar um iframe abaixo do iframe principal, em que um vídeo ficará sobreposto ao outro. */
