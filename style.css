@@ -15,6 +15,7 @@ body {
   place-content: center;
   height: 100vh;
   overflow: hidden; /* esconde barras laterais */
+  backdrop-filter: brightness(0.5); /* reduz o brilho do fundo dando destaque ao elemento central*/
 }
 
 #app {
@@ -207,12 +208,24 @@ footer {
   z-index: -1;
 }
 
-iframe {
+#video {
   width: 100%;
   height: 100%;
-
   border-radius: inherit;
 }
+
+#ambient-light {
+  position: absolute; /* absolute em relação à screen */
+  z-index: -1;
+  inset: 0; /* msm significado de top 0, right 0, bootom 0, left 0*/
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  pointer-events: none; /* não aceita cliques! */
+  scale: 1.2;
+  filter: blur(100px), opacity(0.5) saturate(300%);
+}
+
 
 /* Footer */
 .interaction {
