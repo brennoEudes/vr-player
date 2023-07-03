@@ -11,6 +11,7 @@ let ambientLight
 let animationEnded = false
 const videoId = "qC0vDKVPCrw"
 
+// 1º frame (abaixo)
 function createAmbientLight() {
   if (!animationEnded)
     return (ambientLight = new YT.Player("ambient-light", {
@@ -22,6 +23,7 @@ function createAmbientLight() {
     }))
 }
 
+// 2º frame (acima)
 window.onYouTubeIframeAPIReady = function () {
   video = new YT.Player("video", {
     videoId,
