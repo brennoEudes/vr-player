@@ -42,17 +42,36 @@ function videoStateChange(event) {
       ambientLight.playVideo()
       break
 
-    case YT.PlayerState.PAUSE:
+    case YT.PlayerState.PAUSED:
       if (!ambientLight) return
       ambientLight.seekTo(event.target.getCurrentTime())
       ambientLight.pauseVideo()
       break
   }
 }
-function ambientLightReady(event) {
-  event.target.mute() /* cmd video mute */
+
+function betterAmbientLight(event) {
+  event.target.mute() /* comando video mute */
+
+  const qualityLevels = event.target.getAvailableQualityLevels();
+  if (qualityLevels && qualityLevels.length && qualityLevels.length > 0) {
+    qualityLevels.reverse();
+    const lowestLevel = qualityLevels[qualityLevels.findIndex(q => q !== "auto")]; /* garante que buscará o menor index independente do nível de qualidade que existir */
+
+    event.target.setPlaybackQuality(lowestLevel);
+  }
 }
-function ambientStateChange(event) {}
+
+function ambientLightReady(event) {
+  betterAmbientLight(event);
+}
+function ambientStateChange(event) {
+  switch (event.data) {
+    case YT.PlayerState.BUFFERING:
+    case YT.PlayerState.PLAYING:
+      betterAmbientLight(event);
+  }
+}
 
 const app = document.querySelector("#app")
 /* quando a animação acabar, executa a função */
