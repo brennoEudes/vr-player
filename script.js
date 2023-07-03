@@ -53,23 +53,27 @@ function videoStateChange(event) {
 function betterAmbientLight(event) {
   event.target.mute() /* comando video mute */
 
-  const qualityLevels = event.target.getAvailableQualityLevels();
+  const qualityLevels = event.target.getAvailableQualityLevels()
   if (qualityLevels && qualityLevels.length && qualityLevels.length > 0) {
-    qualityLevels.reverse();
-    const lowestLevel = qualityLevels[qualityLevels.findIndex(q => q !== "auto")]; /* garante que buscará o menor index independente do nível de qualidade que existir */
+    qualityLevels.reverse()
+    const lowestLevel =
+      qualityLevels[
+        qualityLevels.findIndex((q) => q !== "auto")
+      ] /* garante que buscará o menor index independente do nível de qualidade que existir */
 
-    event.target.setPlaybackQuality(lowestLevel);
+    event.target.setPlaybackQuality(lowestLevel)
   }
 }
 
 function ambientLightReady(event) {
-  betterAmbientLight(event);
+  betterAmbientLight(event)
 }
 function ambientStateChange(event) {
   switch (event.data) {
     case YT.PlayerState.BUFFERING:
     case YT.PlayerState.PLAYING:
-      betterAmbientLight(event);
+      betterAmbientLight(event)
+      break
   }
 }
 
