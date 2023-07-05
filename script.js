@@ -5,26 +5,26 @@ tag.src = "https://www.youtube.com/iframe_api" // busca api e insere um src
 var firstScriptTag = document.getElementsByTagName("script")[0] // coloca a 1º tag script do código antes da tag script criada acima
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-// Criando iframes
+// CRIANDO IFRAMES
 let video
 let ambientLight
-let animationEnded = false
+let animationEnded = false // variável de controle
 const videoId = "qC0vDKVPCrw"
 
-// 1º frame (abaixo)
+// 2º frame (abaixo)
 function createAmbientLight() {
   if (!animationEnded) return
 
   ambientLight = new YT.Player("ambient-light", {
     videoId,
     events: {
-      onReady: ambientLightReady /* vídeo mute */,
-      onStateChange: ambientStateChange,
+      onReady: ambientLightReady /* 1º ajuste: vídeo mutado */,
+      onStateChange: ambientStateChange /* mudança de estado */,
     },
   })
 }
 
-// 2º frame (acima)
+// 1º frame (acima)
 window.onYouTubeIframeAPIReady = function () {
   video = new YT.Player("video", {
     videoId,
@@ -34,12 +34,13 @@ window.onYouTubeIframeAPIReady = function () {
   })
 }
 
+// CONTROLE DOS VÍDEOS
 function videoStateChange(event) {
   switch (event.data) {
     case YT.PlayerState.PLAYING:
       if (!ambientLight) return
-      ambientLight.seekTo(event.target.getCurrentTime()) // colocando o vídeo de abaixo no msm tempo q o vídeo principal!
-      ambientLight.playVideo()
+      ambientLight.seekTo(event.target.getCurrentTime()) // coloca o vídeo de baixo no msm tempo q o vídeo principal!
+      ambientLight.playVideo() // play no vídeo secundário
       break
 
     case YT.PlayerState.PAUSED:
@@ -65,9 +66,11 @@ function betterAmbientLight(event) {
   }
 }
 
+// Quando vídeo secundátio estiver pronto
 function ambientLightReady(event) {
   betterAmbientLight(event)
 }
+
 function ambientStateChange(event) {
   switch (event.data) {
     case YT.PlayerState.BUFFERING:
@@ -77,7 +80,8 @@ function ambientStateChange(event) {
   }
 }
 
-const app = document.querySelector("#app")
+// Colocando o vídeo secundário na página
+const app = document.querySelector("#app") // pegando div "app"
 /* quando a animação acabar, executa a função */
 app.addEventListener("animationend", (e) => {
   if (e.animationName !== "appear") return
